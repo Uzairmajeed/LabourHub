@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/detailscard"
-        android:layout_width="350dp"
+        android:layout_width="390dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,93 +22,84 @@
                 android:id="@+id/imageViewProfile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:padding="8dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/NeumorphismShape" />
+                app:shapeAppearanceOverlay="@style/NeumorphismShape"
+                tools:layout_editor_absoluteX="6dp"
+                tools:layout_editor_absoluteY="16dp" />
 
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
                 android:text="John Doe"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewProfile" />
+
 
             <TextView
                 android:id="@+id/textViewAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Age: 30"
-                app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
-                app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+                app:layout_constraintStart_toStartOf="@+id/textViewAdhere"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewMobile"
-                android:layout_width="0dp"
+                android:layout_width="151dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:text="Mobile: +1234567890"
-                app:layout_constraintStart_toStartOf="@+id/textViewCategory"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
+                app:layout_constraintStart_toStartOf="@id/textViewCategory"
+                app:layout_constraintTop_toBottomOf="@id/textViewCategory"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="156dp" />
 
             <TextView
                 android:id="@+id/textViewArea"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:text="Area: XYZ"
                 app:layout_constraintStart_toStartOf="@+id/textViewAdhere"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAdhere" />
-
-            <TextView
-                android:id="@+id/textViewSkills"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Skills: Android, Java, XML"
-                app:layout_constraintStart_toStartOf="@+id/textViewArea"
-                app:layout_constraintTop_toBottomOf="@+id/textViewArea" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAdhere"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="71dp" />
 
             <TextView
                 android:id="@+id/textViewCategory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:text="Category: Developer"
-                app:layout_constraintStart_toStartOf="@+id/textViewSkills"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSkills" />
+                app:layout_constraintStart_toStartOf="@id/textViewArea"
+                app:layout_constraintTop_toBottomOf="@id/textViewArea"
+                tools:layout_editor_absoluteX="128dp"
+                tools:layout_editor_absoluteY="121dp" />
 
             <TextView
                 android:id="@+id/textViewAdhere"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="52dp"
                 android:text="Adhere: Some value"
-                app:layout_constraintStart_toStartOf="@+id/textViewAge"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewAge" />
 
             <LinearLayout
                 android:id="@+id/linearline"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="2dp"
                 android:background="#0B0101"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewMobile" />
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="153dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

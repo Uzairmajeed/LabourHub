@@ -19,4 +19,3 @@ class MyViewModel : ViewModel() {
         _postListLiveData.postValue(postList)
     }
 }
-

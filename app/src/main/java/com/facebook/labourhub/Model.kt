@@ -5,7 +5,6 @@ data class Post(
     val age: String,
     val mobile: String,
     val area: String,
-    val skills: String,
     val category: String,
     val adhaar: String,
     val photo: String

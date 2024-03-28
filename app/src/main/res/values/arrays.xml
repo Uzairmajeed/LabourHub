@@ -5,6 +5,8 @@
         <item>Painter</item>
         <item>Carpenter</item>
         <item>Mason</item>
+        <item>PopWork</item>
+        <item>SlabWork</item>
         <item>Other</item>
         <!-- Add more categories here if needed -->
     </string-array>

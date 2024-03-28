@@ -17,7 +17,6 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
         val textViewAge: MaterialTextView = itemView.findViewById(R.id.textViewAge)
         val textViewMobile: MaterialTextView = itemView.findViewById(R.id.textViewMobile)
         val textViewArea: MaterialTextView = itemView.findViewById(R.id.textViewArea)
-        val textViewSkills: MaterialTextView = itemView.findViewById(R.id.textViewSkills)
         val textViewCategory: MaterialTextView = itemView.findViewById(R.id.textViewCategory)
         val textViewAdhere: MaterialTextView = itemView.findViewById(R.id.textViewAdhere)
     }
@@ -35,7 +34,6 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
         holder.textViewAge.text = currentPost.age
         holder.textViewMobile.text = currentPost.mobile
         holder.textViewArea.text = currentPost.area
-        holder.textViewSkills.text = currentPost.skills
         holder.textViewCategory.text = currentPost.category
         holder.textViewAdhere.text = currentPost.adhaar
 
