@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- styles.xml -->
+    <style name="NeumorphismShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:translationZ">2dp</item>
+        <item name="android:background">@color/neumorphism_background</item>
+    </style>
+
+    <style name="NeumorphismTextView">
+        <item name="android:background">@drawable/neumorphism_background</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:translationZ">2dp</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+</resources>

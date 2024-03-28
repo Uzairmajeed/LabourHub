@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_options">
+        <item>All</item>
+        <item>Painter</item>
+        <item>Carpenter</item>
+        <item>Mason</item>
+        <item>Other</item>
+        <!-- Add more categories here if needed -->
+    </string-array>
+
+</resources>

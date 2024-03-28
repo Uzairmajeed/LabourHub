@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LabourHub" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/neumorphism_background</item>
+        <item name="colorPrimaryDark">@color/neumorphism_background</item>
+        <item name="colorAccent">@color/neumorphism_stroke</item>
+
+        <item name="android:statusBarColor">#63ADBF</item>
+
+    </style>
+
+    <style name="Theme.LabourHub" parent="Base.Theme.LabourHub" />
+
+    <!-- Screen background if light mode on -->
+    <style name="SCREEN">
+        <item
+            name="android:background">#ecf0f3</item>
+    </style>
+    <!-- Texts background if light mode on -->
+    <style name="TEXT">
+        <item name="android:textColor">#272424</item>
+    </style>
+</resources>

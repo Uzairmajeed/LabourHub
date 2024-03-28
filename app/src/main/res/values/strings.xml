@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LabourHub</string>
+    <string name="category_prompt">Select_Category</string>
+
+</resources>
