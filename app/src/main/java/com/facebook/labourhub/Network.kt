@@ -14,7 +14,7 @@ class Network {
             Log.e("Network", responseBody.toString())
             val jsonParser = JsonParser()
             val jsonObject = jsonParser.parse(responseBody) as JsonObject
-            val resultsArray = jsonObject.getAsJsonArray("results")
+            val resultsArray = jsonObject.getAsJsonArray("user")
             val posts = mutableListOf<Post?>()
 
             for (i in 0 until resultsArray.size()) {
