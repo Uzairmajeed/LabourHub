@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    style="@style/SCREEN"
+    tools:context=".Details">
+
+    <!-- Toolbar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/detailstoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/detailsimageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <TextView
+        android:id="@+id/detailstextViewName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Name:John Doe"
+        android:textSize="25sp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailsimageView"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="446dp" />
+
+    <TextView
+        android:id="@+id/detailstextViewAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Age: 30"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/detailstextViewName"
+        app:layout_constraintStart_toStartOf="@id/detailstextViewName"
+        tools:layout_editor_absoluteX="294dp"
+        tools:layout_editor_absoluteY="351dp" />
+
+    <TextView
+        android:id="@+id/detailstextViewCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Category: Developer"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/detailstextViewAge"
+        app:layout_constraintStart_toStartOf="@id/detailstextViewAge"
+        tools:layout_editor_absoluteX="230dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <TextView
+        android:id="@+id/textViewArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Area: XYZ"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/detailstextViewCategory"
+        app:layout_constraintStart_toStartOf="@id/detailstextViewCategory"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="463dp" />
+
+    <TextView
+        android:id="@+id/textViewAdhere"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Adhere: Some value"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewArea"
+        app:layout_constraintStart_toStartOf="@id/textViewArea"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="620dp" />
+
+    <TextView
+        android:id="@+id/textViewMobile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Contact At: +1234567890"
+        android:layout_marginTop="15dp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/textViewAdhere"
+        app:layout_constraintStart_toStartOf="@id/textViewAdhere"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="627dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

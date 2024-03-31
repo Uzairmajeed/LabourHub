@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642736866588",
+    "project_id": "labourhub-25ed6",
+    "storage_bucket": "labourhub-25ed6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642736866588:android:a9195642b21421e28de6d9",
+        "android_client_info": {
+          "package_name": "com.facebook.labourhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKNqTlXCzyjkpvAZz8wxTbbjfHQUsmWbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

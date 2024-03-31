@@ -1,5 +1,7 @@
 package com.facebook.labourhub
 
+import java.io.Serializable
+
 data class Post(
     val username: String,
     val age: String,
@@ -8,4 +10,4 @@ data class Post(
     val category: String,
     val adhaar: String,
     val photo: String
-)
+): Serializable

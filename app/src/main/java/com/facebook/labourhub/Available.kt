@@ -12,6 +12,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.labourhub.databinding.AvailableBinding
 import kotlinx.coroutines.Dispatchers
@@ -54,10 +55,9 @@ class Available : AppCompatActivity() {
         binding.searchbar.addTextChangedListener { text ->
             performSearch(text.toString())
         }
-        binding.recyclerview.apply {
-            layoutManager = LinearLayoutManager(this@Available)
-            adapter = postAdapter
-        }
+        // Use GridLayoutManager for horizontal layout with two items per row
+        binding.recyclerview.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+        binding.recyclerview.adapter = postAdapter
 
         binding.nestedscrollview.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY > 2) {

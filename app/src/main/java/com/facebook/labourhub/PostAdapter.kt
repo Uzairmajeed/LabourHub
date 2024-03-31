@@ -1,5 +1,6 @@
 package com.facebook.labourhub
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,8 +38,6 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
         holder.textViewCategory.text = currentPost.category
         holder.textViewAdhere.text = currentPost.adhaar
 
-        // Convert HTTP to HTTPS for the image URL
-       // val httpsPhotoUrl = currentPost.photo.replace("http://", "https://")
 
         holder.imageViewProfile.load(currentPost.photo) {
             crossfade(true) // Enable crossfade for smooth image transitions
@@ -47,6 +46,12 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
             listener(onError = { _, throwable ->
                 Log.e("Coil", "Error loading image: ${throwable.message}")
             })
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Details::class.java)
+            intent.putExtra("postDetails", currentPost)
+            holder.itemView.context.startActivity(intent)
         }
 
     }

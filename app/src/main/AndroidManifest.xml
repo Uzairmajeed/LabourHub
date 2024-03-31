@@ -15,6 +15,9 @@
         android:theme="@style/Theme.LabourHub"
         tools:targetApi="31">
         <activity
+            android:name=".Details"
+            android:exported="false" />
+        <activity
             android:name=".Available"
             android:exported="false" />
         <activity
