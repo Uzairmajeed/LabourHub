@@ -1,0 +1,14 @@
+<!-- item_image_pager.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="465dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/NeumorphismShape" />
+</LinearLayout>

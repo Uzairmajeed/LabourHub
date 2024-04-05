@@ -9,7 +9,7 @@
         android:id="@+id/availabecard"
         android:layout_width="0dp"
         android:layout_height="210dp"
-        app:neumorph_backgroundColor="@color/shadow_color"
+        app:neumorph_backgroundColor="#13A5F3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

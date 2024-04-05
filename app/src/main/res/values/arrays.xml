@@ -11,4 +11,14 @@
         <!-- Add more categories here if needed -->
     </string-array>
 
+    <string-array name="category_selection">
+        <item>Painter</item>
+        <item>Carpenter</item>
+        <item>Mason</item>
+        <item>Popwork</item>
+        <item>Slabwork</item>
+        <item>Other</item>
+        <!-- Add more categories here if needed -->
+    </string-array>
+
 </resources>

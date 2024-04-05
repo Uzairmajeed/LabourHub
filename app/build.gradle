@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.facebook.labourhub"
         minSdk 24
-        targetSdk 33
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -43,19 +43,25 @@ dependencies {
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.firebase:firebase-config:21.6.3'
+    implementation 'com.google.firebase:firebase-storage:20.3.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //For ktor Library
     implementation "io.ktor:ktor-client-android:1.6.4"
+
+
+
     //For ViewModel And Live data..
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
+
     //For Json Parsing
     implementation 'com.google.code.gson:gson:2.8.9'
+
     //For Coil Library..
     implementation "io.coil-kt:coil:1.4.0"
 
@@ -64,8 +70,7 @@ dependencies {
     //For material design..
     implementation "com.google.android.material:material:1.3.0-alpha02"
 
-    //For neumorphism..
+    //For neu-morphism..
     implementation 'com.github.fornewid:neumorphism:0.3.2'
-
 
 }

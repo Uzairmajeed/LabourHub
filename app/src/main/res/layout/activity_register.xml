@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".Register">
+
+    <!-- Toolbar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/registertoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Name EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="35dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Address EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addressInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
+        app:layout_constraintStart_toStartOf="@id/nameInputLayout"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="96dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextArea"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Area To Work"
+            android:inputType="textPostalAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Age EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ageInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/addressInputLayout"
+        app:layout_constraintStart_toStartOf="@id/addressInputLayout"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="158dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAge"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Category EditText -->
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/registerProfile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:src="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:shapeAppearanceOverlay="@style/NeumorphismShape" />
+
+    <Button
+        android:id="@+id/imageUploadButton"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        app:layout_constraintTop_toBottomOf="@+id/registerProfile"
+        app:layout_constraintStart_toStartOf="@id/registerProfile" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/categoryInputLayout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ageInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/ageInputLayout"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="219dp">
+
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Select_Category"
+            android:textColor="@android:color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Aadhar EditText -->
+
+
+    <Spinner
+        android:id="@+id/registerspinnerCategory"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:entries="@array/category_selection"
+        android:prompt="@string/category_prompt"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@id/paymentbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/categoryInputLayout"
+        tools:layout_editor_absoluteY="262dp" />
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/paymentbutton"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/baseline_sentiment_satisfied_24"
+        app:layout_constraintEnd_toEndOf="@id/registerspinnerCategory"
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/aadharInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/paymentbutton"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextaadhar"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:hint="Aadhar No"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Phone Number EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/aadharInputLayout"
+        app:layout_constraintStart_toStartOf="@id/aadharInputLayout"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="342dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Register"
+        android:textAllCaps="false"
+        android:enabled="true"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="586dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
