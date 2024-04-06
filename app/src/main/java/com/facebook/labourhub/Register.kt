@@ -17,15 +17,20 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.facebook.labourhub.databinding.ActivityRegisterBinding
 import com.google.firebase.storage.FirebaseStorage
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
-class Register : AppCompatActivity() {
+class Register : AppCompatActivity(),PaymentResultListener{
 
     private lateinit var binding: ActivityRegisterBinding
     // Public property to hold the image URI
     var imageUrl: String?= null
     // Variable to hold the selected category
     private var selectedCategory: String? = null
+    private var isPaymentSuccessful = false // Add this variable to track payment status
+
 
     companion object {
         private const val REQUEST_CODE_PERMISSION = 101
@@ -54,12 +59,46 @@ class Register : AppCompatActivity() {
         binding.registerButton.setOnClickListener {
             checkForCorrectDetails()
         }
+
+        binding.paymentbutton.setOnClickListener {
+            startPayment()
+        }
+    }
+
+    private fun startPayment() {
+        /*
+        *  You need to pass the current activity to let Razorpay create CheckoutActivity
+        * */
+        val activity:Activity = this
+        val co = Checkout()
+
+        try {
+            val options = JSONObject()
+            options.put("name","LabourHub")
+            options.put("description","Demoing_Charges")
+            //You can omit the image option to fetch the image from the dashboard
+            options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg")
+            options.put("theme.color", "#3399cc");
+            options.put("currency","INR");
+            options.put("amount","100")//pass amount in currency subunits
+
+            val prefill = JSONObject()
+            prefill.put("email","uzairmajeed995@gmail.com")
+            prefill.put("contact","7006080848")
+
+            options.put("prefill",prefill)
+            co.open(activity,options)
+        }catch (e: Exception){
+            Toast.makeText(activity,"Error: "+ e.message,Toast.LENGTH_LONG).show()
+            e.printStackTrace()
+        }
     }
 
 
     private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val imageUri = result.data?.data
+            imageUrl=imageUri.toString()
             binding.registerProfile.setImageURI(imageUri)
             if (imageUri != null) {
                 // Upload image to Firebase Cloud Storage
@@ -134,10 +173,17 @@ class Register : AppCompatActivity() {
             Toast.makeText(this, "Aadhar Should be of 12 Digits.", Toast.LENGTH_SHORT).show()
         } else if (!isValidPhone(phone)) {
             Toast.makeText(this, "Phone Number Should be of 10 Digits.", Toast.LENGTH_SHORT).show()
+        }else if (!isPaymentSuccessful()) {
+            Toast.makeText(this, "Please make the payment first.", Toast.LENGTH_SHORT).show()
         } else {
             postToServer()
             //Toast.makeText(this, "Done Succesfully", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun isPaymentSuccessful(): Boolean {
+        // Return the actual payment status
+        return isPaymentSuccessful
     }
 
     private fun isValidName(name: String): Boolean {
@@ -196,11 +242,11 @@ class Register : AppCompatActivity() {
                 )
                 response?.let {
                     // Handle success response
-                    showMessage("Post successful")
+                    showMessage("Registration Complete")
                     finish()
                 } ?: run {
                     // Handle null response
-                    showMessage("Null response received from the server.")
+                    showMessage("Cannot Register:Server Error.")
                 }
             } catch (e: Exception) {
                 // Handle exception and display the error message
@@ -213,6 +259,19 @@ class Register : AppCompatActivity() {
     private fun showMessage(message: String) {
         // Show the message using a Toast or any other UI element
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        // Handle payment success logic here
+        showMessage("Payment Successful")
+        isPaymentSuccessful = true // Set payment status to true on success
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        // Handle payment failure/cancellation logic here
+        showMessage("Payment Failed or Cancelled")
+        isPaymentSuccessful = false // Set payment status to false on failure or cancellation
+
     }
 
 
