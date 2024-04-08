@@ -1,36 +1,29 @@
 package com.facebook.labourhub
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.viewpager.widget.PagerAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.facebook.labourhub.databinding.ItemImagePagerBinding
 
-class ImagePagerAdapter(private val images: List<Int>) : PagerAdapter() {
+class ImagePagerAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val context = container.context
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val itemView = inflater.inflate(R.layout.item_image_pager, container, false)
-
-        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
-        imageView.setImageResource(images[position])
-
-        container.addView(itemView)
-
-        return itemView
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+        val binding = ItemImagePagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ImageViewHolder(binding)
     }
 
-    override fun getCount(): Int {
+    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+        holder.bind(images[position])
+    }
+
+    override fun getItemCount(): Int {
         return images.size
     }
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view == `object`
-    }
-
-    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        container.removeView(`object` as View)
+    inner class ImageViewHolder(private val binding: ItemImagePagerBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(imageResId: Int) {
+            binding.imageView.setImageResource(imageResId)
+        }
     }
 }
+

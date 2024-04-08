@@ -3,13 +3,16 @@ package com.facebook.labourhub
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.viewpager2.widget.ViewPager2
 import com.facebook.labourhub.databinding.ActivityHomeBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import java.util.Timer
 import kotlin.concurrent.timerTask
 
 class Home : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
-    private val images = listOf(R.drawable.image1, R.drawable.image2, R.drawable.image3) // Add your image resources here
+    private val images = listOf(R.drawable.image1, R.drawable.image2, R.drawable.image3,R.drawable.image2,R.drawable.image2) // Add your image resources here
     private var currentPage = 0
     private val timer = Timer()
 
@@ -20,6 +23,10 @@ class Home : AppCompatActivity() {
         setContentView(view)
         val adapter = ImagePagerAdapter(images)
         binding.imageViewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.imageViewPager) { tab, position ->
+            // You can customize the tab appearance or text here
+        }.attach()
 
         // Set a click listener on the Available NeumorphCardView
         binding.avaiableCardview.setOnClickListener {

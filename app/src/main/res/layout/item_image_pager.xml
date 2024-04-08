@@ -8,7 +8,7 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="465dp"
+        android:layout_height="400dp"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/NeumorphismShape" />
 </LinearLayout>
