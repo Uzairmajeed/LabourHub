@@ -76,5 +76,7 @@ dependencies {
     //For rozarpay intregration..
     implementation 'com.razorpay:checkout:1.6.33'
 
+    //For animation..
+    implementation 'com.airbnb.android:lottie:6.3.0'
 
 }
