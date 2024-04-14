@@ -1,7 +1,10 @@
 package com.facebook.labourhub
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.util.Linkify
 import coil.load
 import com.facebook.labourhub.databinding.ActivityDetailsBinding
 
@@ -11,6 +14,10 @@ class Details : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbar.backButton.setOnClickListener {
+            finish()
+        }
 
         val postDetails = intent.getSerializableExtra("postDetails") as Post
         updateUI(postDetails)
@@ -23,7 +30,18 @@ class Details : AppCompatActivity() {
         binding.detailstextViewCategory.text = "Category: ${post.category}"
         binding. textViewArea.text = "Area: ${post.area}"
         binding. textViewAdhere.text = "Adhere: ${post.adhaar}"
-        binding.textViewMobile.text = "Contact At: ${post.mobile}"
+        binding.textViewMobile.apply {
+            text = "Contact At: ${post.mobile}"
+            // Make the mobile number clickable
+            Linkify.addLinks(this, Linkify.PHONE_NUMBERS)
+            // Set a click listener to handle the click on the phone number
+            setOnClickListener {
+                // Create an intent to open the dialer with the phone number
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:${post.mobile}")
+                startActivity(intent)
+            }
+        }
         // You can also load the image using Coil or another library
         binding.detailsimageView.load(post.photo) {
             crossfade(true)

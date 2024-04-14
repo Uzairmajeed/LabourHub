@@ -31,12 +31,11 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val currentPost = postList[position]
         holder.textViewName.text = currentPost.username
-       // holder.textViewAge.append(" " + currentPost.age)
-        holder.textViewAge.text = currentPost.age
-        holder.textViewMobile.text = currentPost.mobile
+        holder.textViewAge.append(" " + currentPost.age)
+        holder.textViewMobile.append(" " + currentPost.mobile)
         holder.textViewArea.text = currentPost.area
-        holder.textViewCategory.text = currentPost.category
-        holder.textViewAdhere.text = currentPost.adhaar
+        holder.textViewCategory.append(" " + currentPost.category)
+        holder.textViewAdhere.append(" " + currentPost.adhaar)
 
 
         holder.imageViewProfile.load(currentPost.photo) {

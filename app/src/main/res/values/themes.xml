@@ -22,4 +22,8 @@
         <item name="android:fontFamily">@font/toolbartextfont</item>
     </style>
 
+    <style name="Detailstext">
+        <item name="android:fontFamily">@font/detailsfont</item>
+    </style>
+
 </resources>

@@ -3,9 +3,11 @@ package com.facebook.labourhub
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.facebook.labourhub.databinding.ItemImagePagerBinding
 
-class ImagePagerAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
+class ImagePagerAdapter(private val imageUrls: List<String>) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val binding = ItemImagePagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -13,14 +15,18 @@ class ImagePagerAdapter(private val images: List<Int>) : RecyclerView.Adapter<Im
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.bind(images[position])
+        holder.binding.imageView.load(imageUrls[position]){
+            crossfade(true) // Enable crossfade for smooth transition
+            // Add other options as needed
+        }
+
     }
 
     override fun getItemCount(): Int {
-        return images.size
+        return imageUrls.size
     }
 
-    inner class ImageViewHolder(private val binding: ItemImagePagerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ImageViewHolder(val binding: ItemImagePagerBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageResId: Int) {
             binding.imageView.setImageResource(imageResId)
         }

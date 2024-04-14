@@ -40,6 +40,10 @@ class Register : AppCompatActivity(),PaymentResultListener{
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.backButton.setOnClickListener {
+            finish()
+        }
+
         // Set up the spinner item selection listener
         binding.registerspinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

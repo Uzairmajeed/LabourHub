@@ -29,6 +29,9 @@ class Available : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = AvailableBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.toolbar.backButton.setOnClickListener {
+            finish()
+        }
 
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
         postAdapter = PostAdapter(emptyList())
