@@ -13,7 +13,7 @@ class GetRepository {
    }
 
     suspend fun getFromServer(): String? {
-            val response: HttpResponse = client.get("https://dates-fake-burlington-bull.trycloudflare.com/api/users/employees")
+            val response: HttpResponse = client.get("https://shakespeare-labels-ev-per.trycloudflare.com/api/users/employees")
             val responseBody = response.receive<String>()
             return responseBody
     }

@@ -31,7 +31,7 @@ class PostRepository {
             Log.d("JSON_DATA", json)
 
             val response: HttpResponse = withContext(Dispatchers.IO) {
-                client.post("https://minute-eva-na-there.trycloudflare.com/api/users/register") {
+                client.post("https://shakespeare-labels-ev-per.trycloudflare.com/api/users/register") {
                     contentType(ContentType.Application.Json) // Set content type as JSON
                     body = json // Set the JSON data as the request body directly
                 }
