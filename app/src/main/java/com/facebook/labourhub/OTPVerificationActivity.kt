@@ -23,34 +23,38 @@ class OTPVerificationActivity : AppCompatActivity() {
 
         // Retrieve verificationId from intent extras
         val verificationId = intent.getStringExtra("verificationId")
+        val phoneNumber = intent.getStringExtra("phoneNumber")
+
 
         buttonVerifyOTP.setOnClickListener {
             val otpCode = editTextOTP.text.toString().trim()
             if (otpCode.length == 6 && verificationId != null) {
                 // Complete the verification process with the entered OTP code and verificationId
-                verifyOTP(verificationId, otpCode)
+                verifyOTP(verificationId, otpCode,phoneNumber)
             } else {
                 Toast.makeText(this, "Please enter a valid OTP code", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun verifyOTP(verificationId: String, otpCode: String) {
+    private fun verifyOTP(verificationId: String, otpCode: String,phoneNumber: String?) {
         val credential = PhoneAuthProvider.getCredential(verificationId, otpCode)
         FirebaseAuth.getInstance().signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    navigateToNextActivity()
+                    // Navigate to Re_Register activity with the phone number
+                    navigateToNextActivity(phoneNumber)
                 } else {
                     Toast.makeText(this, "Verification failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    private fun navigateToNextActivity() {
+    private fun navigateToNextActivity(phoneNumber: String?) {
         // Navigate to the desired activity after successful verification
         // Example:
-        val intent = Intent(this, Register::class.java)
+        val intent = Intent(this, Re_Register::class.java)
+        intent.putExtra("phoneNumber", phoneNumber)
         startActivity(intent)
         finish() // Finish the OTP verification activity
     }

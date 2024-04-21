@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit
 class Update : AppCompatActivity() {
     private lateinit var binding: ActivityUpdateBinding
     private val network = Network() // Initialize Network class
+    var  fetchedphoneNumber:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +52,9 @@ class Update : AppCompatActivity() {
             // Set alpha value of phone verification card to 1 (visible)
             binding.phoneverificationcardview.alpha = 1f
         }
+         binding.sendotpbutton.setOnClickListener {
+                   initiatePhoneVerification("+917006080848")
+               }
     }
 
     private fun checkingforadhaardetails() {
@@ -73,10 +77,10 @@ class Update : AppCompatActivity() {
                 // Additional data retrieval and processing if needed
                 // userData.username, userData.category, etc.
                 // Perform phone number verification using Firebase Authentication
-                val phoneNumber = userData.mobile
-                binding.sendotpbutton.setOnClickListener {
-                    initiatePhoneVerification("+91${phoneNumber}")
-                }
+                 fetchedphoneNumber = userData.mobile
+               /* binding.sendotpbutton.setOnClickListener {
+                    initiatePhoneVerification("+91${fetchedphoneNumber}")
+                }*/
             } else {
                Toast.makeText(this@Update,"Details Not Found",Toast.LENGTH_SHORT).show()
             }
@@ -107,6 +111,7 @@ class Update : AppCompatActivity() {
                     // Pass both credential and verificationId to OTPVerificationActivity
                     val intent = Intent(this@Update, OTPVerificationActivity::class.java)
                     intent.putExtra("verificationId", verificationId)
+                    intent.putExtra("phoneNumber", phoneNumber)
                     startActivity(intent)
                 }
             })

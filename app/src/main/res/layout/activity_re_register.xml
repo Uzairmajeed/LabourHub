@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Re_Register">
+
+    <!-- Toolbar -->
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/re_registertoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nameInputLayout"/>
+
+    <!-- Name EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re_Name"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Address EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addressInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
+        app:layout_constraintStart_toStartOf="@id/nameInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/nameInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Area To Work"
+            android:inputType="textPostalAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Age EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ageInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/addressInputLayout"
+        app:layout_constraintStart_toStartOf="@id/addressInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/addressInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Category EditText -->
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/registerProfile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="centerCrop"
+        android:src="@color/black"
+        app:shapeAppearanceOverlay="@style/NeumorphismShape"
+        app:layout_constraintTop_toBottomOf="@id/paymentbutton"
+        app:layout_constraintStart_toStartOf="@id/paymentbutton"
+        app:layout_constraintEnd_toEndOf="@id/paymentbutton"
+        app:layout_constraintBottom_toTopOf="@id/imageUploadButton"/>
+
+    <Button
+        android:id="@+id/imageUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UploadImage"
+        app:layout_constraintTop_toBottomOf="@id/registerProfile"
+        app:layout_constraintStart_toStartOf="@id/registerProfile"
+        app:layout_constraintEnd_toEndOf="@id/registerProfile" />
+
+
+    <!-- Aadhar EditText -->
+
+
+    <Spinner
+        android:id="@+id/registerspinnerCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/category_selection"
+        android:prompt="@string/category_prompt"
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/phoneInputLayout"
+        app:layout_constraintBottom_toTopOf="@id/paymentbutton"/>
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/paymentbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/paymentimage"
+        app:layout_constraintTop_toBottomOf="@id/textViewCategory"
+        app:layout_constraintEnd_toEndOf="@id/registerspinnerCategory"
+        app:layout_constraintStart_toStartOf="@id/textViewCategory"
+        app:layout_constraintBottom_toTopOf="@id/registerProfile"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/aadharInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ageInputLayout"
+        app:layout_constraintStart_toStartOf="@id/ageInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/ageInputLayout"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextaadhar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Aadhar No"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Phone Number EditText -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/aadharInputLayout"
+        app:layout_constraintStart_toStartOf="@id/addressInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/aadharInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Save Button -->
+
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:text="Update"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/imageUploadButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/deleteuserButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/deleteuserButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:text="Delete User"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/imageUploadButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toEndOf="@id/updateButton" />
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Category"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
+        app:layout_constraintStart_toStartOf="@id/phoneInputLayout"
+        app:layout_constraintBottom_toTopOf="@id/paymentbutton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
