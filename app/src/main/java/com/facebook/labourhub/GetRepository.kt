@@ -1,5 +1,6 @@
 package com.facebook.labourhub
 
+import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.call.receive
 import io.ktor.client.engine.android.Android
@@ -13,7 +14,7 @@ class GetRepository {
    }
 
     suspend fun getFromServer(): String? {
-            val response: HttpResponse = client.get("https://shakespeare-labels-ev-per.trycloudflare.com/api/users/employees")
+            val response: HttpResponse = client.get("https://bed6-2405-201-5503-a87c-edd4-c1da-546f-c046.ngrok-free.app/api/workers/getallworkers")
             val responseBody = response.receive<String>()
             return responseBody
     }

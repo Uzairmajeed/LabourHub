@@ -58,9 +58,11 @@ class Available : AppCompatActivity() {
         binding.searchbar.addTextChangedListener { text ->
             performSearch(text.toString())
         }
-        // Use GridLayoutManager for horizontal layout with two items per row
-        binding.recyclerview.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
-        binding.recyclerview.adapter = postAdapter
+        // Use Linearlayout for vertical layout
+        binding.recyclerview.apply {
+            layoutManager = LinearLayoutManager(this@Available)
+            adapter = postAdapter
+        }
 
         binding.nestedscrollview.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY > 2) {

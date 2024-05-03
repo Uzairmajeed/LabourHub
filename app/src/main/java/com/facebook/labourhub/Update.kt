@@ -22,6 +22,11 @@ import java.util.concurrent.TimeUnit
 class Update : AppCompatActivity() {
     private lateinit var binding: ActivityUpdateBinding
     private val network = Network() // Initialize Network class
+    var fetchedName:String=""
+    var fetchedArea:String=""
+    var fetchedAge:String=""
+    var fetchedAdharno:String=""
+    var fetchedcategory:String=""
     var  fetchedphoneNumber:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +57,9 @@ class Update : AppCompatActivity() {
             // Set alpha value of phone verification card to 1 (visible)
             binding.phoneverificationcardview.alpha = 1f
         }
-         binding.sendotpbutton.setOnClickListener {
+         /*binding.sendotpbutton.setOnClickListener {
                    initiatePhoneVerification("+917006080848")
-               }
+               }*/
     }
 
     private fun checkingforadhaardetails() {
@@ -77,10 +82,15 @@ class Update : AppCompatActivity() {
                 // Additional data retrieval and processing if needed
                 // userData.username, userData.category, etc.
                 // Perform phone number verification using Firebase Authentication
+                 fetchedName = userData.username
+                 fetchedArea = userData.area
+                 fetchedAge = userData.age
+                 fetchedAdharno = userData.adhaar
                  fetchedphoneNumber = userData.mobile
-               /* binding.sendotpbutton.setOnClickListener {
+                 fetchedcategory = userData.category
+                 binding.sendotpbutton.setOnClickListener {
                     initiatePhoneVerification("+91${fetchedphoneNumber}")
-                }*/
+                }
             } else {
                Toast.makeText(this@Update,"Details Not Found",Toast.LENGTH_SHORT).show()
             }
@@ -111,7 +121,12 @@ class Update : AppCompatActivity() {
                     // Pass both credential and verificationId to OTPVerificationActivity
                     val intent = Intent(this@Update, OTPVerificationActivity::class.java)
                     intent.putExtra("verificationId", verificationId)
-                    intent.putExtra("phoneNumber", phoneNumber)
+                    intent.putExtra("fetchedphoneNumber", phoneNumber)
+                    intent.putExtra("fetchedname", fetchedName)
+                    intent.putExtra("fetchedarea", fetchedArea)
+                    intent.putExtra("fetchedage", fetchedAge)
+                    intent.putExtra("fetchedadhar", fetchedAdharno)
+                    intent.putExtra("fetchedcategory", fetchedcategory)
                     startActivity(intent)
                 }
             })

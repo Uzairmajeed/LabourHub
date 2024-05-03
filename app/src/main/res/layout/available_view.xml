@@ -7,7 +7,7 @@
 
     <soup.neumorphism.NeumorphCardView
         android:id="@+id/availabecard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="210dp"
         app:neumorph_backgroundColor="@color/neumorphism_background"
         app:layout_constraintTop_toTopOf="parent"
