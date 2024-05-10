@@ -25,10 +25,10 @@ class Re_Register : AppCompatActivity() {
         val adhaar =  intent.getStringExtra("fetchedadhar")
         val category =intent.getStringExtra("fetchedcategory")
         binding.editTextPhone.setText(phoneNumber)
-        binding.editTextName.setText(name)
+        binding.textviewTextName.setText(name)
         binding.editTextArea.setText(area)
         binding.editTextAge.setText(age)
-        binding.editTextaadhar.setText(adhaar)
+        binding.textViewaadhar.setText(adhaar)
 
         // Set up the spinner item selection listener
         binding.registerspinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -49,7 +49,7 @@ class Re_Register : AppCompatActivity() {
     private fun updateToServer() {
         val area = binding.editTextArea.text.toString()
         val age = binding.editTextAge.text.toString()
-        val aadhar = binding.editTextaadhar.text.toString()
+        val aadhar = binding.textViewaadhar.text.toString()
         val phone = binding.editTextPhone.text.toString()
 
         lifecycleScope.launch {

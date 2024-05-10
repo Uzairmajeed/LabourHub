@@ -10,27 +10,25 @@
     <include
         android:id="@+id/toolbar"
         layout="@layout/re_registertoolbar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/nameInputLayout"/>
+        android:layout_width="411dp"
+        android:layout_height="40dp" />
 
     <!-- Name EditText -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:layout_editor_absoluteY="40dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextName"
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/textviewTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="Re_Name"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -39,11 +37,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/addressInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/nameInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/nameInputLayout"
         app:layout_constraintStart_toStartOf="@id/nameInputLayout"
-        app:layout_constraintEnd_toEndOf="@id/nameInputLayout">
+        app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
+        tools:layout_editor_absoluteY="69dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextArea"
@@ -57,11 +56,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ageInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/addressInputLayout"
+        app:layout_constraintEnd_toEndOf="@id/addressInputLayout"
         app:layout_constraintStart_toStartOf="@id/addressInputLayout"
-        app:layout_constraintEnd_toEndOf="@id/addressInputLayout">
+        app:layout_constraintTop_toBottomOf="@id/addressInputLayout"
+        tools:layout_editor_absoluteY="132dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextAge"
@@ -71,32 +71,6 @@
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Category EditText -->
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/registerProfile"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:scaleType="centerCrop"
-        android:src="@color/black"
-        app:shapeAppearanceOverlay="@style/NeumorphismShape"
-        app:layout_constraintTop_toBottomOf="@id/paymentbutton"
-        app:layout_constraintStart_toStartOf="@id/paymentbutton"
-        app:layout_constraintEnd_toEndOf="@id/paymentbutton"
-        app:layout_constraintBottom_toTopOf="@id/imageUploadButton"/>
-
-    <Button
-        android:id="@+id/imageUploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="UploadImage"
-        app:layout_constraintTop_toBottomOf="@id/registerProfile"
-        app:layout_constraintStart_toStartOf="@id/registerProfile"
-        app:layout_constraintEnd_toEndOf="@id/registerProfile" />
-
-
-    <!-- Aadhar EditText -->
-
 
     <Spinner
         android:id="@+id/registerspinnerCategory"
@@ -105,34 +79,27 @@
         android:entries="@array/category_selection"
         android:prompt="@string/category_prompt"
         android:spinnerMode="dropdown"
-        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
         app:layout_constraintEnd_toEndOf="@id/phoneInputLayout"
-        app:layout_constraintBottom_toTopOf="@id/paymentbutton"/>
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
+        tools:layout_editor_absoluteX="293dp"
+        tools:layout_editor_absoluteY="285dp" />
 
-    <soup.neumorphism.NeumorphImageButton
-        android:id="@+id/paymentbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/paymentimage"
-        app:layout_constraintTop_toBottomOf="@id/textViewCategory"
-        app:layout_constraintEnd_toEndOf="@id/registerspinnerCategory"
-        app:layout_constraintStart_toStartOf="@id/textViewCategory"
-        app:layout_constraintBottom_toTopOf="@id/registerProfile"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/aadharInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ageInputLayout"
-        app:layout_constraintStart_toStartOf="@id/ageInputLayout"
         app:layout_constraintEnd_toEndOf="@id/ageInputLayout"
-        >
+        app:layout_constraintStart_toStartOf="@id/ageInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/ageInputLayout"
+        tools:layout_editor_absoluteY="193dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextaadhar"
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/textViewaadhar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:hint="Aadhar No"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -141,11 +108,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/aadharInputLayout"
+        app:layout_constraintStart_toStartOf="@id/aadharInputLayout"
         app:layout_constraintTop_toBottomOf="@id/aadharInputLayout"
-        app:layout_constraintStart_toStartOf="@id/addressInputLayout"
-        app:layout_constraintEnd_toEndOf="@id/aadharInputLayout">
+        tools:layout_editor_absoluteY="222dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPhone"
@@ -163,12 +131,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:text="Update"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/imageUploadButton"
+        android:text="Update User"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCategory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/deleteuserButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAllCaps="false"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="418dp" />
 
     <Button
         android:id="@+id/deleteuserButton"
@@ -177,11 +147,13 @@
         android:enabled="true"
         android:text="Delete User"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@id/imageUploadButton"
+        app:layout_constraintEnd_toEndOf="@id/registerspinnerCategory"
+        app:layout_constraintTop_toBottomOf="@id/registerspinnerCategory"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@id/updateButton" />
+        app:layout_constraintStart_toEndOf="@id/updateButton"
+
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="533dp" />
 
     <TextView
         android:id="@+id/textViewCategory"
@@ -189,8 +161,8 @@
         android:layout_height="wrap_content"
         android:text="Select Category"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
         app:layout_constraintStart_toStartOf="@id/phoneInputLayout"
-        app:layout_constraintBottom_toTopOf="@id/paymentbutton"/>
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
+        tools:layout_editor_absoluteY="285dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

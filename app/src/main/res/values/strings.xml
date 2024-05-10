@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LabourHub</string>
     <string name="category_prompt">Select_Category</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
