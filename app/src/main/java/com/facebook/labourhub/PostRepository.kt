@@ -1,17 +1,14 @@
 package com.facebook.labourhub
 
 import android.util.Log
-import com.google.gson.Gson
-import io.ktor.client.HttpClient
-import io.ktor.client.request.*
-import io.ktor.client.statement.HttpResponse
-import io.ktor.client.statement.readText
-import io.ktor.http.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.tasks.await
+import org.json.JSONArray
+import org.json.JSONObject
 
 class PostRepository {
-    private val client = HttpClient()
+
+    private val storageRef = FirebaseStorage.getInstance().reference
 
     suspend fun postToServer(
         username: String,
@@ -19,41 +16,55 @@ class PostRepository {
         age: String,
         adhaar: String,
         mobile: String,
-        imagepath: String?, // Updated parameter to accept image URI
+        imagepath: String?,
         category: String
     ): String? {
         return try {
-            val gson = Gson()
-            val postData = PostData(username, area, age, adhaar, mobile, imagepath, category)
-            val json = gson.toJson(postData)
+            // Create a reference for the JSON file in Firebase Storage
+            val jsonRef = storageRef.child("users_data.json")
 
-            // Log the JSON data that will be sent to the server
-            Log.d("JSON_DATA", json)
-
-            val response: HttpResponse = withContext(Dispatchers.IO) {
-                client.post("https://shakespeare-labels-ev-per.trycloudflare.com/api/users/register") {
-                    contentType(ContentType.Application.Json) // Set content type as JSON
-                    body = json // Set the JSON data as the request body directly
-                }
+            // Get the current data from the JSON file (if it exists)
+            val currentData: JSONArray? = try {
+                val currentDataString = jsonRef.getBytes(MAX_FILE_SIZE.toLong()).await()?.toString(Charsets.UTF_8)
+                if (!currentDataString.isNullOrEmpty()) JSONArray(currentDataString) else null
+            } catch (e: Exception) {
+                null
             }
 
-            val responseBody = response.readText()
-            Log.d("RESPONSE_BODY", responseBody) // Log the response body from the server
-            Log.d("HTTP_STATUS_CODE", "${response.status.value}")
-            responseBody // Return the response body
+            // Create a JSON object for the new user data
+            val userData = JSONObject()
+            userData.put("username", username)
+            userData.put("area", area)
+            userData.put("age", age)
+            userData.put("adhaar", adhaar)
+            userData.put("mobile", mobile)
+            userData.put("image_url", imagepath ?: "") // Add the image URL directly, empty if null
+            userData.put("category", category)
+
+            // Append the new user data to the JSON array if it exists, or create a new array
+            val usersArray = currentData ?: JSONArray()
+            usersArray.put(userData)
+
+            // Convert JSON array to string
+            val jsonString = usersArray.toString()
+
+            // Upload JSON data to Firebase Storage
+            jsonRef.putBytes(jsonString.toByteArray())
+
+            // Log the uploaded data
+            Log.d("DATA_UPLOAD", "Data Uploaded Successfully")
+
+            // Return a success message or any identifier as needed
+            "Data Uploaded Successfully"
         } catch (e: Exception) {
+            // Handle upload failure
             e.printStackTrace()
             null
         }
     }
 
-    data class PostData(
-        val username: String,
-        val area: String,
-        val age: String,
-        val adhaar: String,
-        val mobile: String,
-        val imagepath: String?, // Updated parameter to accept image path (URI string)
-        val category: String
-    )
+    companion object {
+        private const val MAX_FILE_SIZE = 1024 * 1024 // Example: 1 MB
+    }
 }
+

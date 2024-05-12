@@ -1,22 +1,30 @@
 package com.facebook.labourhub
-
 import android.util.Log
-import io.ktor.client.HttpClient
-import io.ktor.client.call.receive
-import io.ktor.client.engine.android.Android
-import io.ktor.client.request.get
-import io.ktor.client.statement.HttpResponse
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.tasks.await
 
 class GetRepository {
-    private val client = HttpClient(Android){
-       followRedirects = false
-        expectSuccess = false
-   }
+    private val storageRef = FirebaseStorage.getInstance().reference
+    private val defaultFileName = "users_data.json" // Default file name
 
-    suspend fun getFromServer(): String? {
-            val response: HttpResponse = client.get("https://bed6-2405-201-5503-a87c-edd4-c1da-546f-c046.ngrok-free.app/api/workers/getallworkers")
-            val responseBody = response.receive<String>()
-            return responseBody
+    suspend fun getFromFirebaseStorage(fileName: String = defaultFileName): String? {
+        return try {
+            // Create a reference for the JSON file in Firebase Storage
+            val jsonRef = storageRef.child(fileName)
+
+            // Download the JSON file
+            val jsonFile = jsonRef.getBytes(MAX_FILE_SIZE.toLong()).await()?.toString(Charsets.UTF_8)
+
+            jsonFile
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e("GetRepository", "Exception: ${e.message}")
+            null
+        }
     }
 
+    companion object {
+        private const val MAX_FILE_SIZE = 1024 * 1024 // Example: 1 MB
+    }
 }
+
