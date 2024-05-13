@@ -10,15 +10,7 @@ class PostRepository {
 
     private val storageRef = FirebaseStorage.getInstance().reference
 
-    suspend fun postToServer(
-        username: String,
-        area: String,
-        age: String,
-        adhaar: String,
-        mobile: String,
-        imagepath: String?,
-        category: String
-    ): String? {
+    suspend fun postToServer(userData: JSONObject): String? {
         return try {
             // Create a reference for the JSON file in Firebase Storage
             val jsonRef = storageRef.child("users_data.json")
@@ -31,19 +23,11 @@ class PostRepository {
                 null
             }
 
-            // Create a JSON object for the new user data
-            val userData = JSONObject()
-            userData.put("username", username)
-            userData.put("area", area)
-            userData.put("age", age)
-            userData.put("adhaar", adhaar)
-            userData.put("mobile", mobile)
-            userData.put("image_url", imagepath ?: "") // Add the image URL directly, empty if null
-            userData.put("category", category)
-
             // Append the new user data to the JSON array if it exists, or create a new array
             val usersArray = currentData ?: JSONArray()
             usersArray.put(userData)
+            Log.d("JsonData", userData.toString())
+
 
             // Convert JSON array to string
             val jsonString = usersArray.toString()
@@ -62,9 +46,9 @@ class PostRepository {
             null
         }
     }
-
     companion object {
         private const val MAX_FILE_SIZE = 1024 * 1024 // Example: 1 MB
     }
+
 }
 

@@ -102,7 +102,6 @@ class Register : AppCompatActivity(),PaymentResultListener{
     private val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val imageUri = result.data?.data
-            imageUrl=imageUri.toString()
             binding.registerProfile.setImageURI(imageUri)
             if (imageUri != null) {
                 // Upload image to Firebase Cloud Storage
@@ -162,6 +161,7 @@ class Register : AppCompatActivity(),PaymentResultListener{
         val aadhar = binding.editTextaadhar.text.toString()
         val phone = binding.editTextPhone.text.toString()
         val imageUri = imageUrl
+
 
         if (name.isEmpty() || area.isEmpty() || age.isEmpty() || aadhar.isEmpty() || phone.isEmpty()) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
@@ -238,12 +238,21 @@ class Register : AppCompatActivity(),PaymentResultListener{
 
         // Pass image URI instead of just image name
         val imageUri = imageUrl
+        Log.d("IMAGE_UPLOAD", "ImageOnPost: $imageUri")
 
         lifecycleScope.launch {
             try {
-                val response = PostRepository().postToServer(
-                    name, area, age, aadhar, phone, imageUri, selectedCategory ?: ""
-                )
+                // Create JSON object directly without using toString()
+                val userData = JSONObject()
+                userData.put("username", name)
+                userData.put("area", area)
+                userData.put("age", age)
+                userData.put("adhaar", aadhar)
+                userData.put("mobile", phone)
+                userData.put("image_url", imageUri ?: "https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA")
+                userData.put("category", selectedCategory ?: "")
+
+                val response = PostRepository().postToServer(userData)
                 response?.let {
                     // Handle success response
                     showMessage("Registration Complete")
@@ -258,6 +267,7 @@ class Register : AppCompatActivity(),PaymentResultListener{
             }
         }
     }
+
 
 
     private fun showMessage(message: String) {
