@@ -113,7 +113,7 @@ class Register : AppCompatActivity(),PaymentResultListener{
                     if (task.isSuccessful) {
                         // Image uploaded successfully, now get the download URL
                         imageRef.downloadUrl.addOnSuccessListener { uri ->
-                             imageUrl = uri.toString()
+                            imageUrl = uri.toString()
                             Log.d("IMAGE_UPLOAD", "Image URL: $imageUrl")
                             // Save the image URL or use it as needed (e.g., store in Firebase Database)
                         }.addOnFailureListener { exception ->
@@ -290,3 +290,4 @@ class Register : AppCompatActivity(),PaymentResultListener{
 
 
 }
+

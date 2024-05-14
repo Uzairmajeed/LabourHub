@@ -43,7 +43,7 @@ class Details : AppCompatActivity() {
             }
         }
         // You can also load the image using Coil or another library
-        binding.detailsimageView.load(post.photo) {
+        binding.detailsimageView.load(post.image_url) {
             crossfade(true)
             placeholder(R.drawable.baseline_sentiment_satisfied_24) // Placeholder image while loading
             error(R.drawable.baseline_sentiment_satisfied_24) // Error image if loading fails

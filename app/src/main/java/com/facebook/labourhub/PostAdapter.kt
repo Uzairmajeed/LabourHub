@@ -38,7 +38,7 @@ class PostAdapter(private var postList: List<Post>) : RecyclerView.Adapter<PostA
         holder.textViewAdhere.append(" " + currentPost.adhaar)
 
 
-        holder.imageViewProfile.load(currentPost.photo) {
+        holder.imageViewProfile.load(currentPost.image_url) {
             crossfade(true) // Enable crossfade for smooth image transitions
             placeholder(R.drawable.baseline_sentiment_satisfied_24) // Optional: Set a placeholder drawable while loading
             error(R.drawable.baseline_sentiment_satisfied_24) // Optional: Set an error drawable if loading fails

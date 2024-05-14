@@ -9,5 +9,5 @@ data class Post(
     val area: String,
     val category: String,
     val adhaar: String,
-    val photo: String
+    val image_url: String
 ): Serializable

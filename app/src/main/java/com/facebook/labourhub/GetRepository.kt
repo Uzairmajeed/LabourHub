@@ -27,4 +27,3 @@ class GetRepository {
         private const val MAX_FILE_SIZE = 1024 * 1024 // Example: 1 MB
     }
 }
-
