@@ -44,6 +44,32 @@ class Re_Register : AppCompatActivity() {
         binding.updateButton.setOnClickListener {
             updateToServer()
         }
+
+        binding.deleteuserButton.setOnClickListener {
+            deleteToserver()
+        }
+    }
+
+    private fun deleteToserver() {
+        val aadhar = binding.textViewaadhar.text.toString()
+
+        lifecycleScope.launch {
+            try {
+                val response = UpdateRepository().deleteFromServer(aadhar)
+                response?.let {
+                    // Handle success response
+                    showMessage("Deletion Complete")
+                    finish()
+                } ?: run {
+                    // Handle null response
+                    showMessage("Cannot Cannot:Server Error.")
+                }
+            } catch (e: Exception) {
+                // Handle exception and display the error message
+                showMessage("Error Deleting data: ${e.message}")
+            }
+        }
+
     }
 
     private fun updateToServer() {
@@ -71,6 +97,8 @@ class Re_Register : AppCompatActivity() {
             }
         }
     }
+
+
     private fun showMessage(message: String) {
         // Show the message using a Toast or any other UI element
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
